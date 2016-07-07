@@ -74,6 +74,7 @@ const MainContainer = React.createClass({
 
 	_stopCounter: function(){
 			Backbone.Events.trigger('stopTimer')
+			// document.querySelector('#wrapper').innerHTML = "Enjoy the moment"
 	},
 
 	render: function(){
@@ -88,7 +89,7 @@ const MainContainer = React.createClass({
 			} else { 
 			color.background = 'white'
 			}
-			
+
 		return (
 			<div id="mainContainer">
 				<h1>In the Moment</h1>

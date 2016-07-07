@@ -1,12 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=PT+Mono);
+
 * {
 	font-family: Helvetica, Arial, sans-serif;
 	box-sizing: border-box;
+	font-family: "PT Mono";
 }
 
 #mainContainer {
 	h1 {
+		font-family: "Oswald";
 		text-align: center;
 		font-size: 72px;
+		text-transform: uppercase;
+		color: #FDB713;
 	}
 	#wrapper {
 		border: 2px solid black;
