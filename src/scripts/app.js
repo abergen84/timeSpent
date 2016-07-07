@@ -1,15 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'	
+import TimeView from './TimeView.js'
 
-const app = function() {
+const app = function (){
 
-	const Header = React.createClass({
-		render: () => {
-			return <h1>YOLO</h1>
-		}
-	})
 
-	ReactDOM.render(<Header/>,document.querySelector('.container'))
+ReactDOM.render(<TimeView />, document.querySelector('.container'))
+
+
 }
 
 app()
