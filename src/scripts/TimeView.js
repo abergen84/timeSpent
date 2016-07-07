@@ -19,6 +19,7 @@ const TimeView = React.createClass({
 
 const MainContainer = React.createClass({
 	
+	interval: null,
 
 
 	getInitialState: function(){
@@ -43,6 +44,9 @@ const MainContainer = React.createClass({
 
 		Backbone.Events.on('stopTimer', function(){
 			clearInterval(forward)
+			self.setState({
+				status: 'stopped'
+			})
 		})
 
 		// var self = this
@@ -83,7 +87,7 @@ const MainContainer = React.createClass({
 			background: ''
 		}
 		if(this.state.status === 'backward'){
-			color.background = 'lightred'
+			color.background = 'red'
 		} else if (this.state.status === 'forward'){
 			color.background = 'lightgreen'
 			} else { 
