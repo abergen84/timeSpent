@@ -24,34 +24,26 @@ const MainContainer = React.createClass({
 	getInitialState: function(){
 		return {
 			year: new Date().getFullYear(),
-			status: true
+			status: ''
 		}
 	},
 
-	_counter: function(){
+	_counterForward: function(){
 
 		var self = this
 		// if(this.state.status){
-			var interval =  
+			var forward =  
 				setInterval(function(){
 				self.setState({
 					year: self.state.year + 1,
+					status: 'forward'
 				})
 			}, 500)
 		// } 
 
 		Backbone.Events.on('stopTimer', function(){
-			clearInterval(interval)
+			clearInterval(forward)
 		})
-
-		// if(!this.state.status){
-		// 	clearInterval(interval)
-		// }
-		
-
-
-
-		// clearInterval(interval)
 
 		// var self = this
 		// var interval = function(state){
@@ -63,36 +55,51 @@ const MainContainer = React.createClass({
 		// 	setTimeout(function(){
 		// 	interval(state)	
 		// 	}, 500)
-		// }			
-			
-		
-
-		// if(this.state.status) {
-		// 	this.setState({
-		// 		year: this.state.year + 1,
-		// 		// status: false
-		// 	})
 		// }
+	},
 
+	_counterBackwards: function(){
+		var self = this
+		var backwards = setInterval(function(){
+			self.setState({
+				year: self.state.year - 1,
+				status: 'backward'
+			})
+		}, 500)
 
+		Backbone.Events.on('stopTimer', function(){
+			clearInterval(backwards)
+		})
 	},
 
 	_stopCounter: function(){
-		// this.setState({
-		// 	status: false
-		// })
-		// if(!this.state.status){
 			Backbone.Events.trigger('stopTimer')
-		// }
 	},
 
 	render: function(){
 		console.log(this.state)
+		var color = {
+			background: ''
+		}
+		if(this.state.status === 'backward'){
+			color.background = 'lightred'
+		} else if (this.state.status === 'forward'){
+			color.background = 'lightgreen'
+			} else { 
+			color.background = 'white'
+			}
+			
 		return (
 			<div id="mainContainer">
-				<h3>{this.state.year}</h3>
-				<button onClick={this._counter} >Start Forward</button>
-				<button onClick={this._stopCounter} >Stop</button>
+				<h1>In the Moment</h1>
+				<div id="wrapper">
+					<h3 style={color}>{this.state.year}</h3>
+					<div id="buttonwrapper">
+						<button onClick={this._counterForward} >Forwards</button>
+						<button onClick={this._stopCounter} >In the Moment</button>
+						<button onClick={this._counterBackwards} > Backwards</button>
+					</div>
+				</div>
 			</div>
 			)
 	}
