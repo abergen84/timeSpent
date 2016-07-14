@@ -1,6 +1,6 @@
 ##Application Overview
 
-#A functioning yearly timer that allows you to count forwards and backwards on command, 
+A functioning yearly timer that allows you to count forwards and backwards on command, 
 utilizing React's setState method and setTimeout. Exercise in working with manipulating state on lower
 level components.
 
